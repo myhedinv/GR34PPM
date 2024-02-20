@@ -7,6 +7,8 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 class RegisterController: UIViewController {
 
@@ -24,15 +26,17 @@ class RegisterController: UIViewController {
     @IBAction func registerButtonClick(_ sender: UIButton) {
         // check if the fields are empty or not
         if (checkInputsForRegister()) {
-            var email = trimString(str: emailTextField.text!)
-            var password = trimString(str: passwordTextField.text!)
-            
-            Auth.auth().createUser(withEmail: <#T##String#>, password: <#T##String#>) { firebaseError, error in if var e = error {
-                    self.sendAlertDialog(titleString: "Error", msgString: e.localizedDescription)
-                } else {
-                    self.performSegue(withIdentifier: "goToNext", sender: self)
+            let email = trimString(str: emailTextField.text!)
+            let password = trimString(str: passwordTextField.text!)
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                if error != nil {
+                    self.sendAlertDialog(titleString: "Error", msgString: error!.localizedDescription)
+                    return
                 }
+                // didn't error, user registered
+                self.performSegue(withIdentifier: "goToNext", sender: self)
             }
+            
         } else {
             sendAlertDialog()
         }
@@ -41,12 +45,12 @@ class RegisterController: UIViewController {
     
     func sendAlertDialog(titleString: String = "Invalid input",
                                 msgString: String = "Please enter valid inputs.") {
-        var dialogMessage = UIAlertController(title: titleString, message: msgString, preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: titleString, message: msgString, preferredStyle: .alert)
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
     func trimString(str: String) -> String {
-        var trimmedString = str.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmedString = str.trimmingCharacters(in: .whitespacesAndNewlines)
         return trimmedString
     }
     
@@ -54,15 +58,15 @@ class RegisterController: UIViewController {
         var passed: Bool = true
         
         //guard statements for confirming nonempty inputs
-        guard var emailText = emailTextField.text else {
+        guard emailTextField.text != nil else {
             passed = false
             return passed
         }
-        guard var passwordText = passwordTextField.text else {
+        guard let passwordText = passwordTextField.text else {
             passed = false
             return passed
         }
-        guard var confirmPasswordText = confirmTextField.text else {
+        guard let confirmPasswordText = confirmTextField.text else {
             passed = false
             return passed
         }
