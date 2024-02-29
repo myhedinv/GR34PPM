@@ -2,7 +2,7 @@
 
 ## Overview
 
-This iOS application is a project made in Xcode and Swift.. The app includes a welcome view, register view, login view, dashboard view, and a contacts table view.
+This iOS application is a project made in Xcode and Swift. The app includes a welcome view, register view, login view, dashboard view, and a contacts table view.
 
 ## Features
 
