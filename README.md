@@ -29,10 +29,11 @@ To run the app locally, follow these steps:
 2. Open the project in Xcode.
 3. Build and run the app on your simulator or device.
 
-## Technologies Used
+## Made with
 
-- Swift programming language
-- Swift Storyboard for building the user interface
+- Xcode as the IDE.
+- Swift programming language.
+- Swift Storyboard for building the user interface.
 - SQLite for data management.
 - CryptoSwift for encryption.
 
