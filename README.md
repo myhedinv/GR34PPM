@@ -32,7 +32,7 @@ To run the app locally, follow these steps:
 ## Technologies Used
 
 - Swift programming language
-- UIKit framework for building the user interface
+- Swift Storyboard for building the user interface
 - SQLite for data management.
 - CryptoSwift for encryption.
 
