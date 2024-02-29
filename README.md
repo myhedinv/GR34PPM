@@ -39,5 +39,5 @@ To run the app locally, follow these steps:
 
 ## Contributors
 
+- Ilirjana Suka
 - Myhedin Vuciterna
-- Illirjana Suka
