@@ -19,7 +19,7 @@ This iOS application is a project made in Xcode and Swift. The app includes a we
    - Users can view their account balance and access other features.
 
 ### 5. Contacts Table View
-   - The contacts table view facilitates easy and quick access to contacts.
+   - The contacts table view allows users to check their contacts.
 
 ## Getting Started
 
